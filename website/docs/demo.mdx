@@ -1,0 +1,42 @@
+---
+slug: /
+sidebar_position: 0
+title: Preset Demo
+---
+
+# Preset Demo
+
+This page is served at the site root (`slug: /`) and exercises the
+`@kaunofakultetas/docusaurus-preset` Mermaid theming.
+
+## Class diagram
+
+```mermaid
+classDiagram
+    class Animal {
+      +String name
+      +int age
+      +makeSound() void
+    }
+    class Dog {
+      +fetch() void
+    }
+    class Cat {
+      +scratch() void
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat
+```
+
+## Sequence diagram
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant S as Site
+    participant P as Preset
+    U->>S: Open /
+    S->>P: Resolve docs route (routeBasePath "/")
+    P-->>S: Render demo.mdx
+    S-->>U: Page with Mermaid diagrams
+```

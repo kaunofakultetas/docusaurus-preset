@@ -48,6 +48,10 @@ web_modules/
 # TypeScript cache
 *.tsbuildinfo
 
+# Compiled preset output (built from src/ by tsc via the `prepare` script;
+# shipped in the npm tarball via package.json "files", so no need to commit it)
+/lib
+
 # Optional npm cache directory
 .npm
 

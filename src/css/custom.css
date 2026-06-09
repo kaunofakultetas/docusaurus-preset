@@ -1,0 +1,135 @@
+/**
+ * VU (Vilniaus universitetas) brand theme for
+ * @kaunofakultetas/docusaurus-preset.
+ *
+ * Infima is fully CSS-variable driven. Light mode lives in `:root`, dark mode
+ * in `[data-theme='dark']`. The seven `--ifm-color-primary-*` shades are
+ * generated from the VU primary using Infima's relative-lightness steps
+ * (±10/15/30%), the same output as the docusaurus.io color generator.
+ *
+ * `accent` has no Infima equivalent, so it is exposed as `--vu-accent` and
+ * used for link-hover / highlight states.
+ */
+
+:root {
+  /* VU primary (maroon) + generated Infima shades */
+  --ifm-color-primary: #78003f;
+  --ifm-color-primary-dark: #6c0039;
+  --ifm-color-primary-darker: #660036;
+  --ifm-color-primary-darkest: #54002c;
+  --ifm-color-primary-light: #840045;
+  --ifm-color-primary-lighter: #8a0048;
+  --ifm-color-primary-lightest: #9c0052;
+
+  /* Brand tokens (custom — not Infima built-ins) */
+  --vu-accent: #e64164;
+  --vu-accent-contrast: #ffffff;
+  --vu-primary-contrast: #ffffff;
+
+  /* Surfaces & text */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #fafafa;
+  --ifm-color-content: #414141;
+  --ifm-font-color-base: #414141;
+  --ifm-color-content-secondary: #6b6b6b;
+
+  /* Borders / emphasis */
+  --ifm-color-emphasis-200: #dcdcdc;
+  --ifm-color-emphasis-300: #dcdcdc;
+  --ifm-toc-border-color: #dcdcdc;
+  --ifm-hr-border-color: #dcdcdc;
+  --ifm-table-border-color: #dcdcdc;
+
+  /* Links: primary, hover to accent */
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--vu-accent);
+
+  /* Code */
+  --ifm-code-font-size: 95%;
+  --ifm-code-background: #fafafa;
+
+  /* Branded navbar: maroon + white */
+  --ifm-navbar-background-color: var(--ifm-color-primary);
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #ffffff;
+
+  /* Branded footer: deep maroon + light text */
+  --ifm-footer-background-color: var(--ifm-color-primary-darkest);
+  --ifm-footer-color: #f5f5f5;
+  --ifm-footer-link-color: #ffffff;
+  --ifm-footer-title-color: #ffffff;
+
+  --ifm-font-family-base: system-ui, -apple-system, sans-serif;
+}
+
+[data-theme='dark'] {
+  /* VU primary (lighter pink for dark backgrounds) + generated shades */
+  --ifm-color-primary: #d6336c;
+  --ifm-color-primary-dark: #c7285f;
+  --ifm-color-primary-darker: #bc265a;
+  --ifm-color-primary-darkest: #9a1f4a;
+  --ifm-color-primary-light: #da497c;
+  --ifm-color-primary-lighter: #dd5484;
+  --ifm-color-primary-lightest: #e3759c;
+
+  --vu-accent: #e64164;
+  --vu-accent-contrast: #ffffff;
+  --vu-primary-contrast: #ffffff;
+
+  /* Surfaces & text */
+  --ifm-background-color: #121212;
+  --ifm-background-surface-color: #1e1e1e;
+  --ifm-color-content: #f5f5f5;
+  --ifm-font-color-base: #f5f5f5;
+  --ifm-color-content-secondary: #a0a0a0;
+
+  /* Borders / emphasis */
+  --ifm-color-emphasis-200: #3a3a3a;
+  --ifm-color-emphasis-300: #3a3a3a;
+  --ifm-toc-border-color: #3a3a3a;
+  --ifm-hr-border-color: #3a3a3a;
+  --ifm-table-border-color: #3a3a3a;
+
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--vu-accent);
+
+  --ifm-code-background: #1e1e1e;
+
+  /* Keep the branded maroon header in dark mode */
+  --ifm-navbar-background-color: #78003f;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: #ffffff;
+
+  /* Dark footer */
+  --ifm-footer-background-color: #1e1e1e;
+  --ifm-footer-color: #f5f5f5;
+  --ifm-footer-link-color: #f5f5f5;
+  --ifm-footer-title-color: #ffffff;
+}
+
+/**
+ * The navbar is VU maroon in both modes, but the brand SVGs are themselves
+ * maroon/black — so render the navbar logo as a flat white silhouette to keep
+ * it legible. Remove this if a dedicated white-variant logo is supplied.
+ */
+.navbar__logo {
+  /* Larger than the 2rem default so the wordmark + icon stay legible */
+  height: 3rem;
+}
+.navbar__title {
+  /* A little breathing room between the logo and the project name */
+  margin-left: 0.5rem;
+}
+.navbar__logo img {
+  filter: brightness(0) invert(1);
+}
+
+/**
+ * Buttons sitting directly on the maroon navbar (color-mode toggle, mobile
+ * hamburger) — their icons use `currentColor`, so force white for contrast.
+ * Scoped to `.navbar__inner` so the mobile slide-out menu (which has its own
+ * light/dark background) is unaffected.
+ */
+.navbar__inner .clean-btn {
+  color: #ffffff;
+}

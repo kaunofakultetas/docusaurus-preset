@@ -1,0 +1,26 @@
+{
+  "name": "@kaunofakultetas/docusaurus-preset",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc && npm run copy-assets",
+    "copy-assets": "rm -rf lib/css lib/static && cp -r src/css lib/css && cp -r static lib/static",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@docusaurus/preset-classic": "^3.10.1",
+    "@docusaurus/theme-mermaid": "^3.10.1",
+    "@docusaurus/types": "^3.10.1"
+  },
+  "peerDependencies": {
+    "@docusaurus/core": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "typescript": "^6.0.3"
+  }
+}
